@@ -17,7 +17,7 @@ export class DbpediaService {
     // const httpParams:HttpParams = {
     // }
     // http://dbpedia.org/sparql?query=SELECT+DISTINCT+?concept+WHERE+{+?s+a+?concept+}+LIMIT+50
-    return this.apiService.get(environment.dbpedia_url+'?query='+encodeURIComponent(query)+'%format=json');
+    return this.apiService.get(environment.dbpedia_url+'?query='+encodeURIComponent(query)+'&format=json');
   }
 
 }
