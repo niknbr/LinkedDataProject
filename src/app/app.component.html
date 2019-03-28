@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="columns">
+        <div class="column col-md-12 col-6">
+            <header class="navbar">
+                <section class="navbar-section">
+                    <a href="..." class="navbar-brand m-2 p-2">Linked Data Project</a>
+                </section>
+            </header>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="columns">
+        <div class="column col-md-12 col-6 text-area">
+            <div class="form-group">
+                <label class="form-label" for="input-example-3">Query</label>
+                <textarea class="form-input ta-query" [(ngModel)]="query" placeholder="Query" rows="3" cols="30"></textarea>
+            </div>
+            <button class="btn" (click)="fetchData(query)">Fetch</button>
+        </div>
+        <div class="column col-6"> {{response|json}}</div>
+    </div>
+</div>
