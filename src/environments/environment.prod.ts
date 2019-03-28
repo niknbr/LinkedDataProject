@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api_url: 'https://api.punkapi.com/v2'
+  dbpedia_url: 'http://dbpedia.org/sparql'
 };
