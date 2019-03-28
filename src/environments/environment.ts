@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  dbpedia_url: 'http://dbpedia.org/sparql'
+  dbpedia_url: 'https://dbpedia.org/sparql'
 };
 
 /*

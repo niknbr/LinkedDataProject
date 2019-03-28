@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  dbpedia_url: 'http://dbpedia.org/sparql'
+  dbpedia_url: 'https://dbpedia.org/sparql'
 };

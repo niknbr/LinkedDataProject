@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "nghbuild": "ng build --prod --base-href 'https://nikz99.github.io/LinkedDataProject/'"
+    "nghbuild": "ng build --prod --base-href 'https://nikz99.github.io/LinkedDataProject/'",
+    "deploy":"npx ngh --dir dist/LinkedDataProject/"
   },
   "private": true,
   "dependencies": {

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "knowmybeer": {
+    "LinkedDataProject": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/knowmybeer",
+            "outputPath": "dist/LinkedDataProject",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -52,18 +52,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "knowmybeer:build"
+            "browserTarget": "LinkedDataProject:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "knowmybeer:build:production"
+              "browserTarget": "LinkedDataProject:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "knowmybeer:build"
+            "browserTarget": "LinkedDataProject:build"
           }
         },
         "test": {
@@ -97,7 +97,7 @@
         }
       }
     },
-    "knowmybeer-e2e": {
+    "LinkedDataProject-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -105,7 +105,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "knowmybeer:serve"
+            "devServerTarget": "LinkedDataProject:serve"
           }
         },
         "lint": {
@@ -120,5 +120,5 @@
       }
     }
   },
-  "defaultProject": "knowmybeer"
+  "defaultProject": "LinkedDataProject"
 }
