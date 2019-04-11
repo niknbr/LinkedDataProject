@@ -9,9 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "nghbuild": "ng build --prod --base-href 'https://nikz99.github.io/LinkedDataProject/'",
-    "deploy":"npx ngh --dir dist/LinkedDataProject/",
-    "build-deploy":"ng build --prod --base-href 'https://nikz99.github.io/LinkedDataProject/' && npx ngh --dir dist/LinkedDataProject/"
-
+    "deploy": "npx ngh --dir dist/LinkedDataProject/",
+    "build-deploy": "ng build --prod --base-href 'https://nikz99.github.io/LinkedDataProject/' && npx ngh --dir dist/LinkedDataProject/"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +24,7 @@
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/router": "^6.0.0",
     "core-js": "^2.5.4",
+    "ngx-xml2json": "^1.0.2",
     "rxjs": "^6.0.0",
     "sparqljs": "^2.2.3",
     "zone.js": "^0.8.26"

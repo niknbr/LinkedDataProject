@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { HttpParamsOptions } from '@angular/common/http/src/params';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,7 @@ export class ApiService {
   post(path: string, body: Object = {}): Observable<any> {
     return this.http.post(
       `${path}`,
-      JSON.stringify(body)
+      body
     ).pipe(catchError(this.formatErrors));
   }
 

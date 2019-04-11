@@ -9,15 +9,13 @@
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="columns">
-        <div class="column col-md-12 col-6 text-area">
-            <div class="form-group">
-                <label class="form-label" for="input-example-3">Query</label>
-                <textarea class="form-input ta-query" [(ngModel)]="query" placeholder="Query" rows="3" cols="30"></textarea>
-            </div>
-            <button class="btn" (click)="fetchData(query)">Fetch</button>
-        </div>
-        <div class="column col-6"> {{response|json}}</div>
-    </div>
-</div>
+<ul class="tab tab-block">
+        <li class="tab-item active">
+          <a href="#" (click)="activeTab='dashboard'" class="active">Dashboard</a>
+        </li>
+        <li class="tab-item">
+          <a href="#" (click)="activeTab='query-runner'" >Query Runner</a>
+        </li>
+</ul>
+<app-query-runner *ngIf="activeTab=='query-runner'"></app-query-runner>
+<app-dashboard *ngIf="activeTab=='dashboard'"></app-dashboard>

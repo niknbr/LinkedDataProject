@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="columns">
+    <div class="column col-md-12 col-12 text-area">
+      <div class="form-group">
+        <div class="container">
+          <div class="columns">
+            <div class="column col-12">
+              <div class="dropdown">
+                <a href="#" class="btn btn-link dropdown-toggle" tabindex="0">
+                  Category <i class="icon icon-caret"></i>
+                </a>
+                <ul class="menu">
+                  <li *ngFor="let item of categories" class="menu-item">
+                    <a href="#" (click)="selected.category=item">{{item.label}}</a>
+                  </li>
+                </ul>
+                {{selected.category.label}}
+              </div>
+            </div>
+            <div class="column col-12">
+              <div class="columns">
+                <div class="col-1 text-center ">
+                  <label class="form-label" for="input-example-1">Year</label>
+                </div>
+                <div class="col-1">
+                  <input class="form-input" type="number" placeholder="00" value="2018" min="1950" max="2018">
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="column col-12">
+            <div class="columns">
+              <div class="col-1"></div>
+              <div class="col-1">
+                <button class="btn" (click)="fetchData(query)">Fetch</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        
+      </div>
+      <div class="column col-6 ">
+      </div>
+    </div>
+  </div>
