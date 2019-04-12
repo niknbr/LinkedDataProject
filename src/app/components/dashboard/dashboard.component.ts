@@ -9,10 +9,13 @@ import { DbpediaService } from 'src/app/services/dbpedia.service';
 })
 export class DashboardComponent implements OnInit {
   categories: any;
+  data: any;
+
   selected: any = {
-    category: ''
+    category: 'All',
+    year: 1990
   }
-  response:any;
+  response: any;
 
   constructor(private dbpediaService: DbpediaService,
     private nobelPrizeService: NobelPrizeService) {
@@ -21,6 +24,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.nobelPrizeService.getCategories().subscribe((data) => {
+      data.unshift({ label: 'All', value: 'All' });
       this.categories = data;
       this.selected.category = this.categories[0];
     })
@@ -28,6 +32,15 @@ export class DashboardComponent implements OnInit {
     // this.nobelPrizeService.getLocalCategories().subscribe((data)=>{
     //   this.response = data;
     // })
+
+    this.fetchData(this.selected);
+  }
+
+  fetchData(selectedData) {
+    this.data = null;
+    this.nobelPrizeService.getData(selectedData.category.value, selectedData.year).subscribe((data) => {
+      this.data = data;
+    })
   }
 
 }

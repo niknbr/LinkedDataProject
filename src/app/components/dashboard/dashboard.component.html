@@ -19,11 +19,12 @@
             </div>
             <div class="column col-12">
               <div class="columns">
-                <div class="col-1 text-center ">
-                  <label class="form-label" for="input-example-1">Year</label>
+                <div class="col-1 text-center">
+                  <span class="text-primary">Year</span>
                 </div>
                 <div class="col-1">
-                  <input class="form-input" type="number" placeholder="00" value="2018" min="1950" max="2018">
+                  <input class="form-input" type="number" placeholder="00" value="2018" min="1950" max="2018"
+                    [(ngModel)]="selected.year">
                 </div>
               </div>
             </div>
@@ -33,15 +34,51 @@
             <div class="columns">
               <div class="col-1"></div>
               <div class="col-1">
-                <button class="btn" (click)="fetchData(query)">Fetch</button>
+                <button class="btn" (click)="fetchData(selected)">Fetch</button>
               </div>
             </div>
           </div>
         </div>
-        </div>
-        
       </div>
-      <div class="column col-6 ">
+
+    </div>
+
+  </div>
+</div>
+<br>
+<div class="container">
+  <div class="columns">
+    <div class="column col-2 col-sm-6 col-mx-auto" *ngIf="data==null">
+      <div class="loading loading-lg"></div>
+    </div>
+    <div class="column col-2 col-sm-6 col-mx-auto" *ngIf="data != null && data.length==0">
+      <div class="unlinked-data">
+        <img src="assets/unlinked_data.png" [style.opacity]="0.1" class="img-responsive">
+        <br>
+        <span class="">That data seems unlinked !</span>
       </div>
     </div>
+    <div class="column col-xs-11 col-2" *ngFor="let item of data">
+      <!-- {{data|json}} -->
+      <div class="card person-card">
+        <div class="card-image">
+          <img [src]="item.thumbnail?item.thumbnail:'assets/place_holder.jpg'" [style.opacity]="!item.thumbnail?0.2:1"
+            class="img-responsive">
+        </div>
+        <div class="card-header">
+          <div class="card-title h5">{{item.personName}}</div>
+          <div class="card-subtitle text-success">{{item.category}} - {{item.year}}</div>
+        </div>
+        <div class="card-body">
+          Born on : {{item.birthday}}
+          <br>
+          Nationality : {{item.nationality}}
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-primary"> Read More </button>
+        </div>
+      </div>
+
+    </div>
   </div>
+</div>
