@@ -10,10 +10,18 @@ import { DbpediaService } from 'src/app/services/dbpedia.service';
 export class DashboardComponent implements OnInit {
   categories: any;
   data: any;
+  localport: number = JSON.parse(localStorage.getItem('localport'));
+  getLocalData: boolean = false;
+  editModal: boolean = false;
+  editedItem: any;
+  toastText: string;
+
+  showToast: boolean = false;
+  toastIsError: boolean = false;
 
   selected: any = {
     category: 'All',
-    year: 1990
+    year: 1921
   }
   response: any;
 
@@ -29,18 +37,80 @@ export class DashboardComponent implements OnInit {
       this.selected.category = this.categories[0];
     })
 
-    // this.nobelPrizeService.getLocalCategories().subscribe((data)=>{
-    //   this.response = data;
-    // })
+    if (this.localport) {
+      this.updateLocalUrl(this.localport);
+    }
 
     this.fetchData(this.selected);
   }
 
   fetchData(selectedData) {
     this.data = null;
-    this.nobelPrizeService.getData(selectedData.category.value, selectedData.year).subscribe((data) => {
-      this.data = data;
-    })
+    if (this.getLocalData != true) {
+      this.nobelPrizeService.getOnlineData(selectedData.category.value, selectedData.year).subscribe((data) => {
+        this.data = data;
+      },
+        () => {
+          this.toggleToast('Error connecting to online server. Please check enable scripts from unauthenticated sources.', true, 8000);
+        })
+    } else {
+      this.nobelPrizeService.getLocalData(selectedData.category.value, selectedData.year).subscribe((data) => {
+        this.data = data;
+      },
+        () => {
+          this.toggleToast('Error connecting to local server', true, 8000);
+        })
+    }
+  }
+
+  openLink(link) {
+    window.open(link);
+  }
+
+  updateLocalUrl(localport: number) {
+    localStorage.setItem('localport', localport + '');
+    this.nobelPrizeService.setLocalhostUrl(`http://localhost:${localport}/NobelDB/`);
+    this.fetchData(this.selected);
+  }
+
+  editItem(item) {
+    this.selected.item = item;
+    this.editedItem = JSON.parse(JSON.stringify(item));
+    this.editModal = true;
+  }
+
+  updateItem(item) {
+    // this.selected.item.nationality = item.nationality;
+    // this.selected.item.otherInfo = item.otherInfo;
+    this.nobelPrizeService.updateNobelDetails(item).subscribe(() => {
+      this.fetchData(this.selected);
+    });
+
+    this.editModal = false;
+  }
+
+  toggleLocalData() {
+    this.getLocalData = !this.getLocalData;
+    this.toggleToast('Fetching data from dbpedia and ' + (this.getLocalData ? 'Local Server' : ' data.nobelprize.org'));
+    this.fetchData(this.selected);
+
+  }
+
+  hideHandler: any;
+  toggleToast(message, error = false, timeout = 0) {
+    this.showToast = false;
+    window.clearTimeout(this.hideHandler);
+    this.toastIsError = error;
+    this.toastText = message;
+    setTimeout(() => {
+      this.showToast = true;
+
+      if (timeout) {
+        this.hideHandler = setTimeout(() => {
+          this.showToast = false;
+        }, timeout)
+      }
+    }, 300);
   }
 
 }
