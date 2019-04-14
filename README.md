@@ -30,23 +30,23 @@ Setup instructions can be found at https://www.youtube.com/watch?v=yYvzeLs77hs
 
 - Using the Jar Converter run the following command  
     
-    `java -jar rdf2rdf-1.0.1-2.3.1.jar dump.nt NobelData.rdf`
+   ``` java -jar rdf2rdf-1.0.1-2.3.1.jar dump.nt NobelData.rdf```
 
 - Go To Bin Folder of Startdog Software and run the following (note please disable security)  
     
-        `stardog-admin.bat server start --web-console --disable-security`  
+    `stardog-admin.bat server start --web-console --disable-security`  
 
     Create a database named 'NobelDB'  
 
-		`stardog-admin db create -n NobelDB`
+	`stardog-admin db create -n NobelDB`
 
 	Upload the rdf in Nobel-DB   
 
-		`stardog data add NobelDB "D:\.....\data.rdf"`  
+	`stardog data add NobelDB "D:\.....\data.rdf"`  
 
 	Run the following sample query to check if it runs successfully or not  
 
-		`stardog query NobelDB "select ?s where {?s ?p ?o} limit 10"`  
+	`stardog query NobelDB "select ?s where {?s ?p ?o} limit 10"`  
 
 - Run the application hosted on github : https://nikz99.github.io/LinkedDataProject/
         
