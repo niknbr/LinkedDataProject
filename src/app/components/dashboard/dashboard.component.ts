@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
 
   selected: any = {
     category: 'All',
-    year: 1921
+    year: 2015
   }
   response: any;
 
@@ -80,8 +80,6 @@ export class DashboardComponent implements OnInit {
   }
 
   updateItem(item) {
-    // this.selected.item.nationality = item.nationality;
-    // this.selected.item.otherInfo = item.otherInfo;
     this.nobelPrizeService.updateNobelDetails(item).subscribe(() => {
       this.fetchData(this.selected);
     });
