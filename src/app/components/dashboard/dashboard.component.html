@@ -123,7 +123,9 @@
               </div>
               <div class="col-6"></div>
               <div class="col-2">
-                <button class="btn btn-primary" (click)="editItem(item)" [disabled]="!getLocalData"> <i
+                <button class="btn btn-primary tooltip-bottom" [class.tooltip]="!getLocalData" 
+                 data-tooltip="Please start local server"
+                 (click)="editItem(item)" [disabled]="!getLocalData"> <i
                     class='icon icon-edit'></i> </button>
               </div>
             </div>
