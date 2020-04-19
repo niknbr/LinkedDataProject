@@ -1,6 +1,6 @@
 # Linked Data Project - Nobel Peace Prize Database
 
-This application is hosted at : https://nikz99.github.io/LinkedDataProject/#
+This application is hosted at : https://niknbr.github.io/LinkedDataProject/#
 
 Since  `http://data.nobelprize.org/sparql` is an insecure interface, we have to enable unsafe scripts in the `https` hosted for the application to work
 
